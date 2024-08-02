@@ -3,6 +3,7 @@
 import Invoice, {InvoiceProps} from "@/app/components/Invoice";
 import InvoiceForm from "@/app/components/InvoiceForm";
 import {useState} from "react";
+import Image from "next/image";
 
 export default function InvoicePage() {
     const defaultProps: Partial<InvoiceProps> = {
@@ -26,7 +27,7 @@ export default function InvoicePage() {
     return <>
         <div>
             <p className="text-xl font-bold text-center p-3">Create Invoice</p>
-            <InvoiceForm onSubmit={setInvoiceProps} />
+            <InvoiceForm onSubmit={setInvoiceProps} invoiceDetails={invoiceProps} />
             <p className="text-xl font-bold text-center p-3">Invoice Preview</p>
             <Invoice {...invoiceProps} />
             <div className="content-center">

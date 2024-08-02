@@ -1,11 +1,12 @@
-import {JobItem} from "@/app/components/Invoice";
-import {useState} from "react";
+import {InvoiceProps, JobItem} from "@/app/components/Invoice";
+import {ChangeEvent, useState} from "react";
 
 interface InvoiceFormProps {
-    onSubmit: Function
+    onSubmit: Function;
+    invoiceDetails: InvoiceProps
 }
 
-export default function InvoiceForm({ onSubmit }: InvoiceFormProps) {
+export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormProps) {
     const [formData, setFormData]: [any, any] = useState({
         invoicingCompany: {
             companyAddress: '',
@@ -24,12 +25,14 @@ export default function InvoiceForm({ onSubmit }: InvoiceFormProps) {
             workOrderNumber: ''
         },
         jobItems: [{ description: '', cost: 0 }],
-        date: '',
+        date: new Date().toLocaleDateString(),
         paymentDetails: {
             bankName: '',
             accountNumber: '',
-            invoiceReference: ''
-        }
+            invoiceReference: '',
+            sortCode: ''
+        },
+        ...invoiceDetails
     });
 
     const handleChange = (e: any) => {
@@ -177,24 +180,26 @@ export default function InvoiceForm({ onSubmit }: InvoiceFormProps) {
                             name="description"
                             placeholder="Description"
                             value={item.description}
-                            onChange={(e) => handleJobItemChange(index, e)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handleJobItemChange(index, e)}
                             className="block w-full px-4 py-2 mt-2 border rounded-md"
                         />
                         <input
                             type="number"
+                            step="0.01"
                             name="cost"
                             placeholder="Cost"
                             value={item.cost}
-                            onChange={(e) => handleJobItemChange(index, e)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handleJobItemChange(index, e)}
                             className="block w-full px-4 py-2 mt-2 border rounded-md"
                         />
                     </div>
                 ))}
-                <button type="button" onClick={addJobItem} className="px-4 py-2 bg-blue-500 text-white rounded-md">Add Job Item</button>
+                <button type="button" onClick={addJobItem} className="px-4 py-2 bg-teal-700 text-white rounded-md">+</button>
             </div>
 
             <div>
                 <h2 className="text-lg font-bold">Payment Details</h2>
+                <hr className="mt-2 border-t border-gray-200"/>
                 <input
                     type="text"
                     name="bankName"
@@ -215,6 +220,27 @@ export default function InvoiceForm({ onSubmit }: InvoiceFormProps) {
                 />
                 <input
                     type="text"
+                    name="sortCode"
+                    placeholder="Sort Code"
+                    value={formData.paymentDetails.sortCode}
+                    onChange={handleChange}
+                    data-section="paymentDetails"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                />
+
+            </div>
+
+            <div>
+                <h2 className="text-lg font-bold">Invoice Details</h2>
+                <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                />
+                <input
+                    type="text"
                     name="invoiceReference"
                     placeholder="Invoice Reference"
                     value={formData.paymentDetails.invoiceReference}
@@ -224,18 +250,7 @@ export default function InvoiceForm({ onSubmit }: InvoiceFormProps) {
                 />
             </div>
 
-            <div>
-                <h2 className="text-lg font-bold">Invoice Date</h2>
-                <input
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
-                />
-            </div>
-
-            <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded-md">Submit</button>
+            <button type="submit" className="px-4 py-2 bg-teal-700 text-white rounded-md">Update Invoice</button>
         </form>
     );
 }

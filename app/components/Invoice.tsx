@@ -40,6 +40,7 @@ export interface PaymentDetails {
     bankName: string;
     accountNumber: string;
     invoiceReference: string;
+    sortCode: string;
 }
 export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
     const { invoicingCompany, paymentDetails, jobItems, invoiceRecipient, invoicedJob , date } = invoiceProps;
@@ -69,6 +70,7 @@ export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
                     <h2 className="text-lg font-bold">For:</h2>
                     <p>{invoicedJob?.jobName}</p>
                     <p>{invoicedJob?.jobAddress}</p>
+                    <hr className="m-2"/>
                     <p><strong>Work Order Number:</strong> {invoicedJob?.workOrderNumber}</p>
                 </div>
             </div>
@@ -83,7 +85,7 @@ export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
                     {jobItems?.map((item: JobItem, index: number) => {
                         return <tr key={index}>
                             <td className="p-4 text-left">{item.description}</td>
-                            <td className="p-4 text-right">£{item.cost}</td>
+                            <td className="p-4 text-right">£{item.cost?.toFixed(2)}</td>
                         </tr>
                     })}
                     <tr>
@@ -91,7 +93,7 @@ export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
                         <td className="font-bold p-4 text-right">£{jobItems?.reduce((total: number, item: JobItem) => {
                             total += Number(item.cost);
                             return total;
-                        }, 0)}</td>
+                        }, 0).toFixed(2)}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -99,11 +101,11 @@ export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
             <div className="payment-details mt-6">
                 <h2 className="text-lg font-bold">Payment Details:</h2>
                 <hr className="m-2"/>
-                <p><strong>Bank:</strong> Your Bank Name</p>
-                <p><strong>Account Number:</strong> 1234567890</p>
-                <p><strong>Sort Code:</strong> 12-34-56</p>
+                <p><strong>Bank:</strong> {paymentDetails?.bankName}</p>
+                <p><strong>Account Number:</strong> {paymentDetails?.accountNumber}</p>
+                <p><strong>Sort Code:</strong> {paymentDetails?.sortCode}</p>
                 <hr className="m-2"/>
-                <p><strong>Invoice Reference:</strong> INV123456</p>
+                <p><strong>Invoice Reference:</strong> {paymentDetails?.invoiceReference}</p>
             </div>
         </div>
     </>;
