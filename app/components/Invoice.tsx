@@ -17,12 +17,12 @@ export interface InvoicingCompany {
 
 
 export interface InvoiceProps {
-    invoicingCompany: InvoicingCompany;
-    invoiceRecipient: InvoiceRecipient;
-    invoicedJob: InvoiceJobDetails;
-    jobItems: JobItem[];
-    date: string;
-    paymentDetails: PaymentDetails;
+    invoicingCompany?: InvoicingCompany;
+    invoiceRecipient?: InvoiceRecipient;
+    invoicedJob?: InvoiceJobDetails;
+    jobItems?: JobItem[];
+    date?: string;
+    paymentDetails?: PaymentDetails;
 }
 
 export interface InvoiceJobDetails {
@@ -51,9 +51,9 @@ export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
                 </div>
                 <div className="w-3/4 left-1/2 text-right">
                     <h1 className="text-3xl font-bold">Logan Property Maintenance</h1>
-                    <p>{invoicingCompany.companyAddress}</p>
-                    <p><strong>Phone:</strong> {invoicingCompany.phoneNumber}</p>
-                    <p><strong>Email:</strong> {invoicingCompany.email}</p>
+                    <p>{invoicingCompany?.companyAddress}</p>
+                    <p><strong>Phone:</strong> {invoicingCompany?.phoneNumber}</p>
+                    <p><strong>Email:</strong> {invoicingCompany?.email}</p>
                     <p><strong>Date:</strong> {date}</p>
                 </div>
             </div>

@@ -1,8 +1,12 @@
 import {JobItem} from "@/app/components/Invoice";
 import {useState} from "react";
 
-export default function InvoiceForm({ onSubmit }) {
-    const [formData, setFormData] = useState({
+interface InvoiceFormProps {
+    onSubmit: Function
+}
+
+export default function InvoiceForm({ onSubmit }: InvoiceFormProps) {
+    const [formData, setFormData]: [any, any] = useState({
         invoicingCompany: {
             companyAddress: '',
             phoneNumber: '',
@@ -28,7 +32,7 @@ export default function InvoiceForm({ onSubmit }) {
         }
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value, dataset } = e.target;
         if (dataset.section) {
             setFormData({

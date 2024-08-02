@@ -5,7 +5,7 @@ import InvoiceForm from "@/app/components/InvoiceForm";
 import {useState} from "react";
 
 export default function InvoicePage() {
-    const defaultProps: InvoiceProps = {
+    const defaultProps: Partial<InvoiceProps> = {
         invoicingCompany: {
             companyAddress: '4 Cranley Road, Bangor',
             phoneNumber: '07434345342',
