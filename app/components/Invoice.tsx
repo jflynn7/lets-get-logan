@@ -84,7 +84,7 @@ export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
                     </tr>
                     {jobItems?.map((item: JobItem, index: number) => {
                         return <tr key={index}>
-                            <td className="p-4 text-left">{item.description}</td>
+                            <td id={`job-${index}`} className="p-4 text-left">{item.description}</td>
                             <td className="p-4 text-right">£{Number(item.cost || 0).toFixed(2)}</td>
                         </tr>
                     })}
