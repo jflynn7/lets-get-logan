@@ -5,13 +5,6 @@ export default function Home() {
     <main className="">
       <div className="">
         <div className="">
-            <Image
-              src="/lpm-logo.jpg"
-              alt="Vercel Logo"
-              width={300}
-              height={300}
-              priority
-            />
             Coming Soon.
         </div>
       </div>

@@ -23,6 +23,7 @@ export interface InvoiceProps {
     jobItems?: JobItem[];
     date?: string;
     paymentDetails?: PaymentDetails;
+    setRef?: (el: any) => any;
 }
 
 export interface InvoiceJobDetails {
@@ -43,12 +44,12 @@ export interface PaymentDetails {
     sortCode: string;
 }
 export default function Invoice(invoiceProps: InvoiceProps): JSX.Element {
-    const { invoicingCompany, paymentDetails, jobItems, invoiceRecipient, invoicedJob , date } = invoiceProps;
+    const { invoicingCompany, setRef, paymentDetails, jobItems, invoiceRecipient, invoicedJob , date } = invoiceProps;
     return <>
-        <div id={'generated-invoice'} className="invoice max-w-2xl mx-auto p-6 bg-white text-black shadow-lg">
+        <div ref={setRef} id={'generated-invoice'} className="invoice max-w-2xl mx-auto p-6 bg-white text-black shadow-lg">
             <div className="flex">
                 <div className="w-1/4">
-                    <Image alt={'LPM Logo'} src={'/lpm-logo.jpg'} width={800} height={800} />
+                    <img src={'/lpm-logo.jpg'}/>
                 </div>
                 <div className="w-3/4 left-1/2 text-right">
                     <h1 className="text-3xl font-bold">Logan Property Maintenance</h1>
