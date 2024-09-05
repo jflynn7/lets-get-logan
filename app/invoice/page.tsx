@@ -18,27 +18,9 @@ export default function InvoicePage() {
         date: new Date().toDateString(),
     }
 
-    function loadItemsWithPrefix() {
-        const keys = Object.keys(localStorage).filter(key => key.startsWith(invoiceStoragePrefix));
-        const items = {};
-
-        for (let key of keys) {
-            // @ts-ignore
-            items[key] = localStorage.getItem(key);
-        }
-
-        return items;
-    }
-
-    console.log(loadItemsWithPrefix());
-
     const [invoiceProps, setInvoiceProps] = useState(defaultProps)
     const [invoiceRef, setInvoiceRef] = useState(null);
-    const storeInvoiceDetailsAndClear = () => {
-        if (invoiceProps.invoicedJob?.workOrderNumber) {
-            localStorage.setItem(`${invoiceStoragePrefix}${invoiceProps.invoicedJob?.workOrderNumber}`, JSON.stringify(invoiceProps));
-        }
-    }
+
     const handlePrint = async () => {
         if (invoiceRef) {
 
