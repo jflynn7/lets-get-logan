@@ -3,7 +3,8 @@
 import Invoice, {InvoiceProps} from "@/app/components/Invoice";
 import InvoiceForm from "@/app/components/InvoiceForm";
 import {useState} from "react";
-import html2PDF from 'jspdf-html2canvas';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const invoiceStoragePrefix = `lpm_invoices_`;
 
@@ -38,15 +39,31 @@ export default function InvoicePage() {
             localStorage.setItem(`${invoiceStoragePrefix}${invoiceProps.invoicedJob?.workOrderNumber}`, JSON.stringify(invoiceProps));
         }
     }
-    const handlePrint = () => {
+    const handlePrint = async () => {
         if (invoiceRef) {
-            html2PDF(invoiceRef, {
-                jsPDF: {
-                    format: 'a4',
-                },
-                imageType: 'image/jpeg',
-                output: './pdf/generate.pdf'
-            }).then(() => storeInvoiceDetailsAndClear());
+
+            const canvas = await html2canvas(invoiceRef);
+            const imgData = canvas.toDataURL('image/png');
+
+            const pdf = new jsPDF();
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+
+            let targetWidth, targetHeight;
+
+            if (imgWidth / imgHeight > pdfWidth / pdfHeight) {
+                targetWidth = pdfWidth;
+                targetHeight = (imgHeight * pdfWidth) / imgWidth;
+            } else {
+                targetHeight = pdfHeight;
+                targetWidth = (imgWidth * pdfHeight) / imgHeight;
+            }
+
+            pdf.addImage(imgData, 'PNG', 0, 0, targetWidth, targetHeight);
+            pdf.save('converted.pdf');
         }
     }
     return <>
