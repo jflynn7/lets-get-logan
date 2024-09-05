@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "jspdf-html2canvas": "^1.5.2",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "jspdf-html2canvas": "^1.5.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
