@@ -78,7 +78,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoicingCompany.companyAddress}
                     onChange={handleChange}
                     data-section="invoicingCompany"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -87,7 +87,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoicingCompany.phoneNumber}
                     onChange={handleChange}
                     data-section="invoicingCompany"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="email"
@@ -96,7 +96,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoicingCompany.email}
                     onChange={handleChange}
                     data-section="invoicingCompany"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
             </div>
 
@@ -109,7 +109,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoiceRecipient.name}
                     onChange={handleChange}
                     data-section="invoiceRecipient"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -118,7 +118,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoiceRecipient.address}
                     onChange={handleChange}
                     data-section="invoiceRecipient"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -127,7 +127,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoiceRecipient.phone}
                     onChange={handleChange}
                     data-section="invoiceRecipient"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="email"
@@ -136,7 +136,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoiceRecipient.email}
                     onChange={handleChange}
                     data-section="invoiceRecipient"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
             </div>
 
@@ -149,7 +149,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoicedJob.jobName}
                     onChange={handleChange}
                     data-section="invoicedJob"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -158,7 +158,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoicedJob.jobAddress}
                     onChange={handleChange}
                     data-section="invoicedJob"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -167,7 +167,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.invoicedJob.workOrderNumber}
                     onChange={handleChange}
                     data-section="invoicedJob"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
             </div>
 
@@ -181,7 +181,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                             placeholder="Description"
                             value={item.description}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => handleJobItemChange(index, e)}
-                            className="block w-full px-4 py-2 mt-2 border rounded-md"
+                            className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                         />
                         <input
                             type="number"
@@ -190,7 +190,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                             placeholder="Cost"
                             value={item.cost}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => handleJobItemChange(index, e)}
-                            className="block w-full px-4 py-2 mt-2 border rounded-md"
+                            className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                         />
                     </div>
                 ))}
@@ -207,7 +207,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.paymentDetails.bankName}
                     onChange={handleChange}
                     data-section="paymentDetails"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -216,7 +216,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.paymentDetails.accountNumber}
                     onChange={handleChange}
                     data-section="paymentDetails"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -225,7 +225,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.paymentDetails.sortCode}
                     onChange={handleChange}
                     data-section="paymentDetails"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
 
             </div>
@@ -237,7 +237,7 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
                 <input
                     type="text"
@@ -246,11 +246,11 @@ export default function InvoiceForm({ onSubmit, invoiceDetails }: InvoiceFormPro
                     value={formData.paymentDetails.invoiceReference}
                     onChange={handleChange}
                     data-section="paymentDetails"
-                    className="block w-full px-4 py-2 mt-2 border rounded-md"
+                    className="block w-full px-4 py-2 mt-2 border rounded-md bg-white"
                 />
             </div>
 
-            <button type="submit" className="px-4 py-2 bg-teal-700 text-white rounded-md">Update Invoice</button>
+            <button type="submit" className="px-4 py-2 bg-teal-700 text-white rounded-md bg-white">Update Invoice</button>
         </form>
     );
 }
